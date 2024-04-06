@@ -5,7 +5,7 @@ export default function FullScrenLayout({
 }) {
   return (
     <main className="flex flex-col h-screen w-full">
-      <nav className="h-16 shadow-md"></nav>
+      {/* <nav className="h-16 shadow-md"></nav> */}
         {children}
     </main>
   )

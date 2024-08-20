@@ -7,11 +7,12 @@ function findSubstringsInObjects(objects, substring) {
     for (const obj of Object.values(objects)) {
       const matchedObject = {};
       let hasMatch = false;
-  
+      
       for (const key in obj) {
         if (typeof obj[key] === 'string' && obj[key].toLowerCase().includes(lowerCaseSubstring)) {
-            matchedObject[key] = obj[key];
+          Object.assign(matchedObject, { ...obj })
           hasMatch = true;
+          continue
         } 
         // else if (typeof obj[key] === 'object') {
         //   // Recursively check nested objects

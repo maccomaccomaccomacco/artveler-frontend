@@ -15,7 +15,6 @@ function NewItineraryPage() {
   const loading = searchInputOpen && searchOptions.length === 0;
 
   useEffect(() => {
-    console.log("eccolo", selectedElements)
     let active = true;
 
     if (!searchInputOpen || inputValue === '') {
@@ -35,7 +34,6 @@ function NewItineraryPage() {
   const containerRef = useRef();
 
   const handleInputChange = (event, newInputValue) => {
-    console.log("input value", newInputValue)
     setInputValue(newInputValue);
   };
 
@@ -94,7 +92,7 @@ function NewItineraryPage() {
               open={searchInputOpen}
               onOpen={handleOpen}
               onClose={handleClose}
-              getOptionLabel={(option) => {return option.title}}
+              getOptionLabel={(option) => { return option.title}}
               options={searchOptions}
               filterOptions={(x) => {
                 const filteredOptions = x.filter(option => option.title && option.title.trim() !== '');
@@ -108,7 +106,6 @@ function NewItineraryPage() {
                 if (newValue) {
                   const newElement = { ...newValue, index: selectedElements.length };
                   setSelectedElements([...selectedElements, newElement]);
-                  console.log(newValue)
                 }
               }}
               renderOption={(props, option) => {
@@ -123,7 +120,7 @@ function NewItineraryPage() {
                 return (
                   <li key={key} {...optionProps}>
                     <img src={option.artworkImg} alt={option.title} className="w-8 h-8 mr-2" />
-                    {option.title}
+                    {option.title} - {option.artist}
                   </li>
                 );
               }}

@@ -6,12 +6,14 @@ import Autocomplete from '@mui/material/Autocomplete';
 import DraggableList from "react-draggable-list";
 import ItineraryStop from '../../components/itinerary_stop';
 import GoogleMapComponent from './GoogleMapComponent';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 function NewItineraryPage() {  
   const [selectedElements, setSelectedElements] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [searchInputOpen, setSearchInputOpen] = useState(false);
   const [searchOptions, setSearchOptions] = useState([]);
+  const [locations, setLocations] = useState([]);
   const loading = searchInputOpen && searchOptions.length === 0;
 
   useEffect(() => {
@@ -56,6 +58,25 @@ function NewItineraryPage() {
     setSelectedElements(newList);
   };
 
+  useEffect(() => {
+    let active = true;
+
+    if (!searchInputOpen || inputValue === '') {
+      return undefined;
+    }
+
+    return () => {
+      active = false;
+    };
+  }, [searchInputOpen, inputValue]);
+
+  useEffect(() => {
+    // Update locations whenever selectedElements changes
+    setLocations(selectedElements.map(element => element.location));
+  }, [selectedElements]);
+
+  // Rest of your component logic...
+  
   return (  
     <div className="z-50 flex flex-col-reverse lg:flex-row">
       <section className={`responsive-left-panel relative w-full`}>
@@ -136,7 +157,9 @@ function NewItineraryPage() {
         </div>
       </section>
       <section className="w-full lg:w-1/2">
-        <GoogleMapComponent /> {/* Add the GoogleMapComponent here */}
+      <LoadScript googleMapsApiKey="AIzaSyBmU6mpjIB1C1TxXf5TrvLX2XpJZiBVdQs">
+        <GoogleMapComponent locations={locations} />
+      </LoadScript>
       </section>
     </div>
   );

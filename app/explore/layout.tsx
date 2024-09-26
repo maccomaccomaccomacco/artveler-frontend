@@ -1,8 +1,8 @@
 
 export default function Layout({ children }) {
     return (
-        <div className="flex w-full items-start justify-end gap-2 px-4 md:px-12">
-            <div className="mx-auto mt-16">
+        <div className="mx-5">
+            <div className="flex flex-col w-full items-start justify-end gap-2">
                 {children}
             </div>
         </div>

@@ -4,13 +4,13 @@ import { Input } from "@/components/ui/input"
 export default function Header({}) {
     return (
         <header className="fixed top-0 flex w-full items-center justify-center  border-b border-gray-200 bg-white shadow-sm z-50 transition-all">
-          <div className='mx-5 flex h-14 w-full max-w-screen-xl items-center justify-between md:h-16'>
+          <div className='mx-5 flex h-14 w-full items-center justify-between md:h-16'>
             <div className="flex items-center space-x-4">
               <MenuIcon className="w-6 h-6" />
               <h1 className="text-2xl font-bold">Artveler.</h1>
             </div>
             <div className="flex">
-              <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Explore</a>
+              <Link className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/explore">Explore</Link>
               <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Itineraries</a>
               <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Lists</a>
               <div className="flex items-center">

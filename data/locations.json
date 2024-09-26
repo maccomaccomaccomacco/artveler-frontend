@@ -1,38 +1,184 @@
-[
-  "Louvre, Paris, France",
-  "Uffizi Gallery, Florence, Italy",
-  "British Museum, London, UK",
-  "National Gallery of Art, Washington, DC, US",
-  "Hermitage Museum, Saint Petersburg, Russia",
-  "Musée Bonnat, Bayonne, France",
-  "Biblioteca Ambrosiana, Milan, Italy",
-  "Vatican Museums, Vatican",
-  "Bibliotheque de l'Institut de France, Paris, France",
-  "Alte Pinakothek, Munich, Germany",
-  "National Institute for the Graphic Design, Rome, Italy",
-  "Palazzo Reale di Torino, Turin, Italy",
-  "Insritut de France, Paris, France",
-  "Galleria dell'Accademia di Firenze, Florence, Italy",
-  "Czartoryski Museum, Kraków, Poland",
-  "Galleria dell'Accademia, Venice, Italy",
-  "Biblioteca Nacional de España, Madrid, Spain",
-  "Palazzo Brera, Milan, Italy",
-  "Albertina, Vienna, Austria",
-  "Church Santa Maria delle Grazie, Milan, Italy",
-  "Musée des Beaux-Arts de Strasbourg, Strasbourg, France",
-  "Ackland Art Museum (University of North Carolina), Chapel Hill, NC, US",
-  "National Gallery, London, UK",
-  "La Scala Theatre Museum, Milan, Italy",
-  "Private Collection",
-  "Museo del Prado, Madrid, Spain",
-  "Christ Church, Oxford, UK",
-  "Chatsworth House, Derbyshire, UK",
-  "Museum Boijmans van Beuningen, Rotterdam, Netherlands",
-  "Parma National Gallery, Parma, Italy",
-  "Ospedale degli Innocenti, Florence, Italy",
-  "Destroyed",
-  "Private Collection, Scottish National Gallery of Modern Art, Edinburgh, UK",
-  "Museo Baroffio e del Sacro Monte, Varese, Italy",
-  "Budapest Museum of Fine Arts, Budapest, Hungary",
-  "Wallraf-Richartz Museum, Cologne, Germany"
-]
+{
+  "locations": [
+    {
+      "name": "Louvre, Paris, France",
+      "latitude": 48.8606,
+      "longitude": 2.3376
+    },
+    {
+      "name": "Uffizi Gallery, Florence, Italy",
+      "latitude": 43.7687,
+      "longitude": 11.2558
+    },
+    {
+      "name": "British Museum, London, UK",
+      "latitude": 51.5194,
+      "longitude": -0.1270
+    },
+    {
+      "name": "National Gallery of Art, Washington, DC, US",
+      "latitude": 38.8913,
+      "longitude": -77.0199
+    },
+    {
+      "name": "Hermitage Museum, Saint Petersburg, Russia",
+      "latitude": 59.9406,
+      "longitude": 30.3138
+    },
+    {
+      "name": "Musée Bonnat, Bayonne, France",
+      "latitude": 43.4914,
+      "longitude": -1.4746
+    },
+    {
+      "name": "Biblioteca Ambrosiana, Milan, Italy",
+      "latitude": 45.4655,
+      "longitude": 9.1874
+    },
+    {
+      "name": "Vatican Museums, Vatican",
+      "latitude": 41.9065,
+      "longitude": 12.4537
+    },
+    {
+      "name": "Bibliotheque de l'Institut de France, Paris, France",
+      "latitude": 48.8575,
+      "longitude": 2.3373
+    },
+    {
+      "name": "Alte Pinakothek, Munich, Germany",
+      "latitude": 48.1488,
+      "longitude": 11.5713
+    },
+    {
+      "name": "National Institute for the Graphic Design, Rome, Italy",
+      "latitude": 41.8986,
+      "longitude": 12.4768
+    },
+    {
+      "name": "Palazzo Reale di Torino, Turin, Italy",
+      "latitude": 45.0703,
+      "longitude": 7.6869
+    },
+    {
+      "name": "Institut de France, Paris, France",
+      "latitude": 48.8575,
+      "longitude": 2.3373
+    },
+    {
+      "name": "Galleria dell'Accademia di Firenze, Florence, Italy",
+      "latitude": 43.7761,
+      "longitude": 11.2580
+    },
+    {
+      "name": "Czartoryski Museum, Kraków, Poland",
+      "latitude": 50.0630,
+      "longitude": 19.9371
+    },
+    {
+      "name": "Galleria dell'Accademia, Venice, Italy",
+      "latitude": 45.4309,
+      "longitude": 12.3314
+    },
+    {
+      "name": "Biblioteca Nacional de España, Madrid, Spain",
+      "latitude": 40.4253,
+      "longitude": -3.6883
+    },
+    {
+      "name": "Palazzo Brera, Milan, Italy",
+      "latitude": 45.4709,
+      "longitude": 9.1885
+    },
+    {
+      "name": "Albertina, Vienna, Austria",
+      "latitude": 48.2048,
+      "longitude": 16.3683
+    },
+    {
+      "name": "Church Santa Maria delle Grazie, Milan, Italy",
+      "latitude": 45.4655,
+      "longitude": 9.1707
+    },
+    {
+      "name": "Musée des Beaux-Arts de Strasbourg, Strasbourg, France",
+      "latitude": 48.5800,
+      "longitude": 7.7523
+    },
+    {
+      "name": "Ackland Art Museum (University of North Carolina), Chapel Hill, NC, US",
+      "latitude": 35.9121,
+      "longitude": -79.0541
+    },
+    {
+      "name": "National Gallery, London, UK",
+      "latitude": 51.5089,
+      "longitude": -0.1283
+    },
+    {
+      "name": "La Scala Theatre Museum, Milan, Italy",
+      "latitude": 45.4674,
+      "longitude": 9.1895
+    },
+    {
+      "name": "Private Collection",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "name": "Museo del Prado, Madrid, Spain",
+      "latitude": 40.4138,
+      "longitude": -3.6922
+    },
+    {
+      "name": "Christ Church, Oxford, UK",
+      "latitude": 51.7506,
+      "longitude": -1.2560
+    },
+    {
+      "name": "Chatsworth House, Derbyshire, UK",
+      "latitude": 53.2273,
+      "longitude": -1.6156
+    },
+    {
+      "name": "Museum Boijmans van Beuningen, Rotterdam, Netherlands",
+      "latitude": 51.9154,
+      "longitude": 4.4718
+    },
+    {
+      "name": "Parma National Gallery, Parma, Italy",
+      "latitude": 44.8069,
+      "longitude": 10.3280
+    },
+    {
+      "name": "Ospedale degli Innocenti, Florence, Italy",
+      "latitude": 43.7760,
+      "longitude": 11.2625
+    },
+    {
+      "name": "Destroyed",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "name": "Private Collection, Scottish National Gallery of Modern Art, Edinburgh, UK",
+      "latitude": 55.9503,
+      "longitude": -3.2206
+    },
+    {
+      "name": "Museo Baroffio e del Sacro Monte, Varese, Italy",
+      "latitude": 45.8660,
+      "longitude": 8.8016
+    },
+    {
+      "name": "Budapest Museum of Fine Arts, Budapest, Hungary",
+      "latitude": 47.5166,
+      "longitude": 19.0771
+    },
+    {
+      "name": "Wallraf-Richartz Museum, Cologne, Germany",
+      "latitude": 50.9382,
+      "longitude": 6.9576
+    }
+  ]
+}

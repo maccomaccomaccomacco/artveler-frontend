@@ -10,13 +10,12 @@ const ExploreSearch = ({onResults, onSelectPlace}) => {
         setSelectedPlaces(places);
     };
 
-    const triggerArtworksResearch = () => {
+    const triggerArtworksResearch = async () => {
         const nearbyLocations = [];
         for (const place of selectedPlaces) {
             nearbyLocations.push(...getNearbyLocations(place.coordinates.lat, place.coordinates.lng));
         }
-        const artworks = getArtworksInLocations(nearbyLocations);
-        console.log(artworks);
+        const artworks = await getArtworksInLocations(nearbyLocations);
         onResults(artworks);
         onSelectPlace(selectedPlaces);
     };
@@ -48,9 +47,16 @@ const ExploreSearch = ({onResults, onSelectPlace}) => {
         return deg * (Math.PI / 180);
     }
 
-    function getArtworksInLocations(locations) {
+    async function getArtworksInLocations(locations) {
         const locationNames = locations.map(location => location.name);
-        return artworksData.filter(artwork => locationNames.includes(artwork.location));
+        try {
+            const response = await fetch('/api/artworks');
+            const artworksData = await response.json();
+            return artworksData.filter(artwork => locationNames.includes(artwork.location));
+        } catch (error) {
+            console.error('Error fetching artworks:', error);
+            return [];
+        }
     }
 
     return (

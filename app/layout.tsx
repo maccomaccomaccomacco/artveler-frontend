@@ -5,6 +5,13 @@ import Header from '@/components/header'
 import { cn } from '@/lib/utils'
 import './globals.css'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
 
 const OpenSans = Open_Sans({
   subsets: ['latin'],
@@ -32,16 +39,18 @@ const fontBody = Inter({
 
 export default function Layout({ children }) {
   return (
-    <html lang="en">
-      <body 
-        className={cn(
-          'antialiased',
-          OpenSans.variable
-        )}
-      >
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={cn(
+            'antialiased',
+            OpenSans.variable
+          )}
+          >
           <Header />
           {children}
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

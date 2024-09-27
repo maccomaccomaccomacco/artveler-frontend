@@ -53,8 +53,8 @@ export default function Page() {
         setCurrentPage(pageNumber);
     };
 
-    const totalPages = Math.ceil(filteredResults.length / itemsPerPage);
-    const paginatedResults = filteredResults.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+    const totalPages = Array.isArray(filteredResults) ? Math.ceil(filteredResults.length / itemsPerPage) : 0;
+    const paginatedResults = Array.isArray(filteredResults) ? filteredResults.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage) : [];
 
     return (
         <React.Fragment>

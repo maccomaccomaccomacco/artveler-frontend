@@ -1,5 +1,13 @@
 import Link from 'next/link'
 import { Input } from "@/components/ui/input"
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton
+} from '@clerk/nextjs'
+
 
 export default function Header({}) {
     return (
@@ -14,11 +22,18 @@ export default function Header({}) {
               <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Collections</a>
               <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Itineraries</a>
               <div className="flex items-center">
-                <span className='px-8 border-r-2'>|</span>
+                {/* <span className='px-8 border-r-2'>|</span>
                 <span className="cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" data-id="12">Jane Doe</span>
                 <span className="relative flex shrink-0 overflow-hidden rounded-full" data-id="13">
                   <img className="aspect-square h-4 w-4 bg-black " data-id="14" alt="Jane Doe" src="" />
-                </span>
+                </span> */}
+
+                <SignedOut>
+                  <SignInButton />
+                </SignedOut>
+                <SignedIn>
+                  <UserButton />
+                </SignedIn>
               </div>
             </div>
             {/* <div className="relative w-1/3">

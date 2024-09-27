@@ -58,7 +58,7 @@ const locations = [
     { title: 'Chapora Fort', type: 'Historical Site' },
 ]
 
-export default function SearchInputAutocomplete() {
+export default function PlaceSearchAutocompleteSelect() {
     const classes = useStyles();
 
     return (

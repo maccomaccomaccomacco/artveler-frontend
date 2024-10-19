@@ -82,8 +82,8 @@ const PlaceSearchAutocompleteSelect = ({ onSelectedPlacesChange }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <div>
       <Select
+         classNames={{container: () => 'w-full', control: () => '!rounded-full !min-h-10'}}
         inputValue={input}
         onInputChange={handleInputChange}
         options={suggestions}
@@ -94,7 +94,6 @@ const PlaceSearchAutocompleteSelect = ({ onSelectedPlacesChange }) => {
         styles={{
           container: (provided) => ({
             ...provided,
-            width: '300px',
           }),
           indicatorsContainer: (provided) => ({
             ...provided,
@@ -102,7 +101,6 @@ const PlaceSearchAutocompleteSelect = ({ onSelectedPlacesChange }) => {
           }),
         }}
       />
-    </div>
   );
 };
 

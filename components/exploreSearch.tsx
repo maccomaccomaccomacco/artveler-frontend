@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PlaceSearchAutocompleteSelect from './placeSearchAutcompleteSelect';
 import locationsData from '@/data/locations.json'; // Assuming locations.json is in the same directory
 import artworksData from '@/data/output.json'; // Assuming output.json is in the same directory
+import SearchIcon from '@mui/icons-material/Search';
 
 const ExploreSearch = ({onResults, onSelectPlace}) => {
     const [selectedPlaces, setSelectedPlaces] = useState([]);
@@ -60,9 +61,11 @@ const ExploreSearch = ({onResults, onSelectPlace}) => {
     }
 
     return (
-        <div>
-        <PlaceSearchAutocompleteSelect onSelectedPlacesChange={handleSelectedPlacesChange} />
-        <button onClick={triggerArtworksResearch}>CLICCA</button>
+        <div className='flex flex-row w-full relative'>
+            <PlaceSearchAutocompleteSelect onSelectedPlacesChange={handleSelectedPlacesChange} />
+            <button className="bg-blue-300 hover:bg-blue-400 text-white font-bold py-1 px-1 h-8 w-8 rounded-full absolute right-1 top-1" onClick={triggerArtworksResearch}>
+                <SearchIcon fontSize='small' className='relative' sx={{ color: 'rgb(255,255,255)' }}  />
+            </button>
         </div>
     );
 };

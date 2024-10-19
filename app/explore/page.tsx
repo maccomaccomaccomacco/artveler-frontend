@@ -11,16 +11,14 @@ export default function Page() {
     const [locationResults, setLocationResults] = useState([]);
     const [selectedArtists, setSelectedArtists] = useState([]);
     const [selectedLocations, setSelectedLocations] = useState([]);
-    const [place, setPlace] = useState({ title: '' });
+    const [places, setPlaces] = useState([]);
     const [hasSelectedResult, setHasSelectedResult] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 8;
 
     const handleSelectionChange = useCallback((selectedItems, type) => {
         const filterKey = type === 'artist' ? 'artist' : 'location';
-        const setSelected = type === 'artist' ? setSelectedArtists : setSelectedLocations;
-
-        setSelected(selectedItems);
+        
         setFilteredResults(
             selectedItems.length === 0
                 ? results
@@ -30,7 +28,7 @@ export default function Page() {
         );
     }, [results]);
 
-    const handleResults = useCallback((newResults) => {
+    const handleResults = useCallback((firstResearchResults) => {
         const uniqueItems = (items, key) => 
             items.map(item => ({ value: item[key], label: item[key] }))
                 .filter((item, index, self) => 
@@ -38,15 +36,15 @@ export default function Page() {
                 )
                 .sort((a, b) => a.label.localeCompare(b.label));
 
-        setResults(newResults);
-        setFilteredResults(newResults);
-        setArtistsResults(uniqueItems(newResults, 'artist'));
-        setLocationResults(uniqueItems(newResults, 'location'));
-        setHasSelectedResult(newResults.length > 0);
+        setResults(firstResearchResults);
+        setFilteredResults(firstResearchResults);
+        setArtistsResults(uniqueItems(firstResearchResults, 'artist'));
+        setLocationResults(uniqueItems(firstResearchResults, 'location'));
+        setHasSelectedResult(firstResearchResults.length > 0);
     }, []);
 
-    const handleSelectedPlace = useCallback((place) => {
-        setPlace(place);
+    const handleSelectedPlace = useCallback((places) => {
+        setPlaces(places);
     }, []);
 
     const handlePageChange = (pageNumber) => {
@@ -61,7 +59,7 @@ export default function Page() {
             <div className="mx-auto mt-16">
                 {!hasSelectedResult && (
                     <>
-                        <h1 className="text-4xl font-bold text-center text-gray-800 pt-16">Explore Artworks Near You</h1>
+                        <h1 className="text-4xl font-bold text-center text-gray-800 pt-16 mb-4">Explore Artworks Near You</h1>
                         <ExploreSearch onResults={handleResults} onSelectPlace={handleSelectedPlace} />
                     </>
                 )}
@@ -69,7 +67,7 @@ export default function Page() {
             {hasSelectedResult && (
             <div className='mx-5 mt-10 mb-20'>
                 <div className='mb-4'>
-                    <h1 className="text-2xl font-bold text-gray-800">Results near {place.title}</h1>
+                    <h1 className="text-2xl font-bold text-gray-800">Results by location</h1>
                     <span>{results.length} artworks found</span>
                     <br />
                     <hr />
@@ -78,6 +76,7 @@ export default function Page() {
                     <Filters
                         artistsResults={artistsResults}
                         locationResults={locationResults}
+                        // placesResults={places}
                         handleSelectionChange={handleSelectionChange}
                     />
                     <Results

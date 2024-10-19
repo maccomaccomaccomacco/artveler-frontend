@@ -20,7 +20,7 @@ export default function Header({}) {
             <div className="flex">
               <Link className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/explore">Explore</Link>
               <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Collections</a>
-              <a className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/public-trips">Itineraries</a>
+              <Link className=" cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" href="/itinerary">Itinerary</Link>
               <div className="flex items-center">
                 {/* <span className='px-8 border-r-2'>|</span>
                 <span className="cursor-pointer rounded-lg px-3 py-1.5 text-gray-700 transition-colors hover:bg-gray-100 hidden md:block text-sm font-semibold" data-id="12">Jane Doe</span>

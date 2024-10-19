@@ -13,7 +13,7 @@ function NewItineraryPage() {
   const [inputValue, setInputValue] = useState('');
   const [searchInputOpen, setSearchInputOpen] = useState(false);
   const [searchOptions, setSearchOptions] = useState([]);
-  const [locations, setLocations] = useState([]);
+  const [data, setData] = useState([]);
   const loading = searchInputOpen && searchOptions.length === 0;
 
   useEffect(() => {
@@ -47,15 +47,19 @@ function NewItineraryPage() {
     setSearchInputOpen(false);
   };
 
-  const handleRemoveElement = (elementToRemove) => {
-    setSelectedElements(selectedElements.filter(element => element !== elementToRemove));
-  };
-  const handleDragElement = (elementToRemove) => {
-    setSelectedElements(selectedElements.filter(element => element !== elementToRemove));
+  const handleRemoveLocation = (item) => {
+    item.artworks.forEach(artwork => {
+      setSelectedElements(selectedElements.filter(element => element !== artwork));
+    });
+    setData(data.filter(element => element.location !== item.location));
   };
 
-  const onStopsOrderChange = (newList) => {
-    setSelectedElements(newList);
+  // const handleDragLocation = (item) => {
+  //   setData(data.filter(element => element.location !== item.location));
+  // };
+
+  const onStopsOrderChange = (data) => {
+    setData(data);
   };
 
   useEffect(() => {
@@ -71,20 +75,35 @@ function NewItineraryPage() {
   }, [searchInputOpen, inputValue]);
 
   useEffect(() => {
-    // Update locations whenever selectedElements changes
-    setLocations(selectedElements.map(element => element.location));
-  }, [selectedElements]);
-
-  // Rest of your component logic...
+    console.log("selectedelements", selectedElements)
+    let groupedByLocation = [];
+    if (selectedElements.length > 0) {
+      const groupedObject = selectedElements.reduce((acc, element) => {
+        const location = element.location;
+        if (!acc[location]) {
+          acc[location] = [];
+        }
+        acc[location].push(element);
+        return acc;
+      }, {});
+  
+      groupedByLocation = Object.keys(groupedObject).map(location => ({
+        location,
+        artworks: groupedObject[location]
+      }));
+  
+      setData(groupedByLocation);
+    }
+    }, [selectedElements]);
   
   return (  
     <div className="z-50 flex flex-col-reverse lg:flex-row">
       <section className={`responsive-left-panel relative w-full`}>
-        <div id="itinerary" className={`px-4 md:px-12 my-5 mx-auto max-w-4xl`} ref={containerRef} >
+        <div id="itinerary" className={`px-4 md:px-12 my-5 mx-auto max-w-4xl pt-40`} ref={containerRef}  >
           <DraggableList 
-            itemKey={"index"}
-            list={selectedElements}
-            template={(props) => <ItineraryStop {...props} onRemove={handleRemoveElement} onDrag={handleDragElement} />}
+            itemKey={"location"}
+            list={data}
+            template={(props) => <ItineraryStop {...props} onRemoveLocation={handleRemoveLocation} />}
             container={() => containerRef.current}
             constrainDrag={true}
             onMoveEnd={(newList) => onStopsOrderChange(newList)}
@@ -157,9 +176,9 @@ function NewItineraryPage() {
         </div>
       </section>
       <section className="w-full lg:w-1/2">
-      <LoadScript googleMapsApiKey="AIzaSyBmU6mpjIB1C1TxXf5TrvLX2XpJZiBVdQs">
-        <GoogleMapComponent locations={locations} />
-      </LoadScript>
+      {/* <LoadScript googleMapsApiKey="AIzaSyBmU6mpjIB1C1TxXf5TrvLX2XpJZiBVdQs">
+        <GoogleMapComponent locations={[]} />
+      </LoadScript> */}
       </section>
     </div>
   );

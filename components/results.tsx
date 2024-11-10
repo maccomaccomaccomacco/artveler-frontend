@@ -5,7 +5,9 @@ import Pagination from './pagination';
 const Results = ({ paginatedResults, totalPages, currentPage, handlePageChange }) => (
     <div className='w-5/6'>
         <div className='grid gap-10 md:grid-cols-2 lg:gap-6 xl:grid-cols-4 min-h-screen'>
-            {paginatedResults.map((result) => (
+            {
+            paginatedResults.length > 0 ? 
+            paginatedResults.map((result) => (
                 <div className="group cursor-pointer" key={result.id}>
                     <div className="overflow-hidden rounded-md bg-gray-100 transition-all dark:bg-gray-800">
                         <a className="relative block aspect-square">
@@ -31,7 +33,10 @@ const Results = ({ paginatedResults, totalPages, currentPage, handlePageChange }
                         </div>
                     </div>
                 </div>
-            ))}
+                ))
+                : <div className="group cursor-pointer text-center text-gray-500 dark:text-gray-400">No results found</div>
+            
+            }
         </div>
         <Pagination totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
     </div>

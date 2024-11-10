@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Selector({ inputs, onSelectionChange }) {
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedItems, setSelectedItems] = useState(inputs);
   
     const handleCheckboxChange = (elem) => {
       setSelectedItems((prevSelected) =>
@@ -13,7 +13,7 @@ export default function Selector({ inputs, onSelectionChange }) {
 
     useEffect(() => {
         onSelectionChange(selectedItems);
-    }, [selectedItems, onSelectionChange]);
+    }, [selectedItems]);
 
     return (
         <div className="max-h-48 overflow-y-auto ">

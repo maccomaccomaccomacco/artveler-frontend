@@ -18,13 +18,11 @@ export default function Page() {
 
     const handleSelectionChange = useCallback((selectedItems, type) => {
         const filterKey = type === 'artist' ? 'artist' : 'location';
+        console.log(filterKey);
+        console.log(selectedItems);
         
         setFilteredResults(
-            selectedItems.length === 0
-                ? results
-                : results.filter(result =>
-                    selectedItems.some(item => item.value === result[filterKey])
-                )
+            results.filter(result => selectedItems.some(item => item.value === result[filterKey]) )
         );
     }, [results]);
 
@@ -65,14 +63,12 @@ export default function Page() {
                 )}
             </div>
             {hasSelectedResult && (
-            <div className='mx-5 mt-10 mb-20'>
-                <div className='mb-4'>
+            <div className='mt-10 mb-20 w-full'>
+                <div className='mb-4 pb-4 border-b border-gray-300'>
                     <h1 className="text-2xl font-bold text-gray-800">Results by location</h1>
                     <span>{results.length} artworks found</span>
-                    <br />
-                    <hr />
                 </div>
-                <div className='flex mt-12'>
+                <div className='flex mt-8'>
                     <Filters
                         artistsResults={artistsResults}
                         locationResults={locationResults}

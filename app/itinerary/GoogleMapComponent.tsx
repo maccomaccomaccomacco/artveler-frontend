@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
-  height: '400px'
+  height: '100%'
 };
 
 const center = {
@@ -18,13 +17,11 @@ interface GoogleMapComponentProps {
 
 const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ locations }) => {
   const [coordinates, setCoordinates] = useState<{ lat: number, lng: number }[]>([]);
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
 
   useEffect(() => {
-    console.log(locations)
     const geocodeLocations = async () => {
       if (window.google && window.google.maps) {
-        console.log('Geocoding locations...');
         const geocoder = new window.google.maps.Geocoder();
         const coords = await Promise.all(locations.map(location => {
           return new Promise<{ lat: number, lng: number }>((resolve, reject) => {
@@ -32,6 +29,7 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ locations }) =>
               if (status === 'OK' && results[0]) {
                 resolve(results[0].geometry.location.toJSON());
               } else {
+                console.error(`Geocode was not successful for the following reason: ${status}`);
                 reject(status);
               }
             });
@@ -46,20 +44,30 @@ const GoogleMapComponent: React.FC<GoogleMapComponentProps> = ({ locations }) =>
     }
   }, [locations]);
 
+  useEffect(() => {
+    if (map && coordinates.length > 0) {
+      const bounds = new window.google.maps.LatLngBounds();
+      coordinates.forEach(coord => {
+        bounds.extend(coord);
+      });
+      map.fitBounds(bounds);
+    }
+  }, [map, coordinates]);
+
   return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={map => setMap(map)}
-      >
-        {coordinates.map((coord, index) => (
-          <Marker
-            key={index}
-            position={coord}
-          />
-        ))}
-      </GoogleMap>
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={10}
+      onLoad={map => setMap(map)}
+    >
+      {coordinates.map((coord, index) => (
+        <Marker
+          key={index}
+          position={coord}
+        />
+      ))}
+    </GoogleMap>
   );
 };
 
